@@ -9,6 +9,7 @@ export default class Ball_array{
         this.ballcount = 50;
         this.balls = [];
         this.makeBall();
+        document.body.addEventListener('click', (e) => this.clickMake(e))
     }
     
     makeBall(){
@@ -26,6 +27,13 @@ export default class Ball_array{
             }
         }
         this.drawBall();
+    }
+    clickMake(e){
+        this.ballcount += 1;
+        this.degree = Math.random()* 2 * Math.PI;
+        this.x = Math.random() * (this.width - 20) + 10
+        this.y = Math.random() * (this.height - 20) + 10
+        this.balls[this.ballcount - 1] = new ball(this.width, this.height, this.ctx, this.degree, e.clientX, e.clientY, this.ballSize);
     }
 
     distance(x1, y1, x2, y2){
