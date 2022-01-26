@@ -1,7 +1,7 @@
 export default class ball{
     constructor(w, h, ctx, degree, x, y){
-        this.w = w;
-        this.h = h;
+        this.width = w;
+        this.height = h;
         this.ctx = ctx;
         this.x = x;
         this.y = y;
@@ -15,48 +15,16 @@ export default class ball{
     }   
 
     location(){
-        if(this.x - 10 <= 0){
-            if(this.vy > 0){
-                this.degree = (Math.PI) - this.degree;
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }else{
-                this.degree =  (Math.PI) - this.degree;
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }
-        }else if(this.x + 10 >= this.w){
-            if(this.vy > 0){
-                this.degree = (Math.PI * 3 ) - this.degree; 
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }else{
-                this.degree = (Math.PI) - this.degree;  
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }
-        }else if(this.y - 10 <= 0){
-            if(this.vx > 0){
-                this.degree = (Math.PI * 2) - this.degree  
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }else{
-                this.degree = (Math.PI * 2)  - this.degree;
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }
-        }else if(this.y + 10 >= this.h){
-            if(this.vx > 0){
-                this.degree = (Math.PI * 2) - this.degree;
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }else{
-                this.degree = (Math.PI * 2) - this.degree;
-                this.vx = Math.cos(this.degree) * 2;
-                this.vy = Math.sin(this.degree) * 2;
-            }
+        if(this.x + 10 >= this.width){
+            this.vx *= -1;
+        }else if(this.x -10 <= 0){
+            this.vx *= -1;
         }
-
+        if(this.y + 10 >= this.height){
+            this.vy *= -1;
+        }else if(this.y - 10 <= 0){
+            this.vy *= -1;
+        }
         this.x += this.vx;
         this.y += this.vy;
     }
@@ -100,5 +68,4 @@ export default class ball{
             this.ctx.closePath();
         }
     }
-
 }

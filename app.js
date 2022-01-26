@@ -9,7 +9,6 @@ class app{
         this.width = document.body.clientWidth;
         this.height = document.body.clientHeight;
         this.canvas.height = this.height;
-        
         this.canvas.width = this.width;
         new Ball_array(this.width, this.height, this.ctx)
     }

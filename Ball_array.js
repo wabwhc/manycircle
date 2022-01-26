@@ -2,8 +2,8 @@ import ball from "./ball.js";
 
 export default class Ball_array{
     constructor(w, h, ctx){
-        this.w = w;
-        this.h = h;
+        this.width = w;
+        this.height = h;
         this.ctx = ctx;
         this.ballcount = 100;
         this.balls = [];
@@ -13,9 +13,9 @@ export default class Ball_array{
     makeBall(){
         for(let i = 0; i < this.ballcount; i++){
             this.degree = Math.random()* 2 * Math.PI;
-            this.x = Math.random() * (this.w - 20) + 10
-            this.y = Math.random() * (this.h - 20) + 10
-            this.balls[i] = new ball(this.w, this.h, this.ctx, this.degree, this.x, this.y);
+            this.x = Math.random() * (this.width - 20) + 10
+            this.y = Math.random() * (this.height - 20) + 10
+            this.balls[i] = new ball(this.width, this.height, this.ctx, this.degree, this.x, this.y);
             if(i !== 0){
                 for(let j = 0; j < i; j++){
                     if(20 >= this.distance(this.balls[i].x, this.balls[i].y, this.balls[j].x, this.balls[j].y)){
@@ -31,9 +31,9 @@ export default class Ball_array{
         this.dis = Math.sqrt((x1 - x2) ** 2 + (y2 - y1) ** 2)
         return this.dis;
     }
-    
+
     drawBall(){
-        this.ctx.clearRect(0,0,this.w, this.h);
+        this.ctx.clearRect(0,0,this.width, this.height);
         for(let i = 0; i < this.ballcount; i++){
             if(i !== 0){
                 for(let j = 0; j < i; j++){
@@ -51,7 +51,4 @@ export default class Ball_array{
         }
         requestAnimationFrame(this.drawBall.bind(this));
     }
-
-
-
 }
