@@ -10,6 +10,7 @@ export default class Ball_array{
         this.balls = [];
         this.makeBall();
         document.body.addEventListener('click', (e) => this.clickMake(e))
+        document.body.addEventListener('touchstart', (e) => this.clickMake(e))
     }
     
     makeBall(){
