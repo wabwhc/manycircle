@@ -5,7 +5,8 @@ export default class Ball_array{
         this.width = w;
         this.height = h;
         this.ctx = ctx;
-        this.ballcount = 100;
+        this.ballSize = 15;
+        this.ballcount = 50;
         this.balls = [];
         this.makeBall();
     }
@@ -15,7 +16,7 @@ export default class Ball_array{
             this.degree = Math.random()* 2 * Math.PI;
             this.x = Math.random() * (this.width - 20) + 10
             this.y = Math.random() * (this.height - 20) + 10
-            this.balls[i] = new ball(this.width, this.height, this.ctx, this.degree, this.x, this.y);
+            this.balls[i] = new ball(this.width, this.height, this.ctx, this.degree, this.x, this.y, this.ballSize);
             if(i !== 0){
                 for(let j = 0; j < i; j++){
                     if(20 >= this.distance(this.balls[i].x, this.balls[i].y, this.balls[j].x, this.balls[j].y)){
@@ -37,7 +38,7 @@ export default class Ball_array{
         for(let i = 0; i < this.ballcount; i++){
             if(i !== 0){
                 for(let j = 0; j < i; j++){
-                    if(20 >= this.distance(this.balls[i].x, this.balls[i].y, this.balls[j].x, this.balls[j].y)){
+                    if(this.ballSize * 2 >= this.distance(this.balls[i].x, this.balls[i].y, this.balls[j].x, this.balls[j].y)){
                         if(this.balls[i].break === 0){
                             this.balls[i].break = 1;
                         }

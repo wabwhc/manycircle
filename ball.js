@@ -1,10 +1,11 @@
 export default class ball{
-    constructor(w, h, ctx, degree, x, y){
+    constructor(w, h, ctx, degree, x, y, ballSize){
         this.width = w;
         this.height = h;
         this.ctx = ctx;
         this.x = x;
         this.y = y;
+        this.ballSize = ballSize;
         this.breakX;
         this.breakY;
         this.degree = degree;
@@ -15,14 +16,14 @@ export default class ball{
     }   
 
     location(){
-        if(this.x + 10 >= this.width){
+        if(this.x + this.ballSize >= this.width){
             this.vx *= -1;
-        }else if(this.x -10 <= 0){
+        }else if(this.x -this.ballSize <= 0){
             this.vx *= -1;
         }
-        if(this.y + 10 >= this.height){
+        if(this.y + this.ballSize >= this.height){
             this.vy *= -1;
-        }else if(this.y - 10 <= 0){
+        }else if(this.y - this.ballSize <= 0){
             this.vy *= -1;
         }
         this.x += this.vx;
@@ -33,7 +34,7 @@ export default class ball{
         if(this.break === 0){
             this.ctx.beginPath();
             this.ctx.strokeStyle = this.fillStyle;
-            this.ctx.arc(this.x, this.y, 10, 0, Math.PI * 2, false);
+            this.ctx.arc(this.x, this.y, this.ballSize, 0, Math.PI * 2, false);
             this.ctx.stroke();
             this.ctx.closePath();
             this.location();
@@ -42,7 +43,7 @@ export default class ball{
         }else{
             this.x = -20;
             this.y = -20;
-            if(this.break >= 20){
+            if(this.break >= 40){
                 
             }else{ 
                 this.break += 1;
