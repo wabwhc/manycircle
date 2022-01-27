@@ -33,6 +33,7 @@ export default class ball{
     draw(){
         if(this.break === 0){
             this.ctx.beginPath();
+            this.ctx.lineWidth = 2;
             this.ctx.strokeStyle = this.fillStyle;
             this.ctx.arc(this.x, this.y, this.ballSize, 0, Math.PI * 2, false);
             this.ctx.stroke();
@@ -67,7 +68,6 @@ export default class ball{
             this.ctx.arc(this.breakX + Math.cos(((Math.PI * 2) / 6) * i) * this.break, this.breakY + Math.sin(((Math.PI * 2)/ 6) * i) * this.break, 5, 0, Math.PI * 2, false);
             this.ctx.strokeStyle = this.fillStyle;
             this.ctx.stroke();
-            this.ctx.lineWidth = 2;
             this.ctx.closePath();
         }
     }
